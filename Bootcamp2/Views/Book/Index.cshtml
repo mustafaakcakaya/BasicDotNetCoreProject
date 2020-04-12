@@ -1,0 +1,34 @@
+﻿@model List<BookViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kitap Listesi</h1>
+
+@*@foreach (var book in Model)
+{
+    <p>ID: @book.Id Name: @book.Name Author : @book.Publisher.</p>
+}*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">Sıra No</div>
+        <div class="col-md-3">Kitap Adı</div>
+        <div class="col-md-3">Yazar</div>
+        <div class="col-md-3">Yayın Evi</div>
+        <div class="col-md-2"></div>
+    </div>
+    @foreach (var book in Model)
+    {
+        <div class="row">
+            <div class="col-md-1"><p>@book.Id</p></div>
+            <div class="col-md-3"><p>@book.Name</p></div>
+            <div class="col-md-3"><p>@book.Author</p></div>
+            <div class="col-md-3"><p>@book.Publisher</p></div>
+            <div><a href="Book/Edit?id=@book.Id" class="btn btn-primary col-md-1">Düzenle</a></div>
+            <div><a href="Book/Delete?id=@book.Id" class="btn btn-danger col-md-1">Sil</a></div>
+        </div>
+    }
+</div>
+

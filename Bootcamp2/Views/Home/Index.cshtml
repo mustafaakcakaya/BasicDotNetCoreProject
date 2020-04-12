@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    @*@{ 
+        for (int i = 0; i < 50; i++)
+        {
+            int bolenSayisi = 0;
+            for (int j = 0; j <= i; j++)
+            {
+                if (i%j==0)
+                {
+                    bolenSayisi++;
+                }
+            }
+            if (bolenSayisi==2)
+            {
+                <p>@i sayisi asal sayidir. </p>
+            }
+        }
+    }*@
+
+
+    @for (int i = 0; i < 50; i++)
+    {
+        if (i % 6 == 0)
+        {
+
+        }
+    }
+
+</div>
