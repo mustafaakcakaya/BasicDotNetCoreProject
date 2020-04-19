@@ -8,6 +8,7 @@ namespace Bootcamp2.Context
 {
     public class BookContext
     {
+
         public List<BookEntity> Books { get; set; }
 
         public BookContext()
@@ -30,8 +31,17 @@ namespace Bootcamp2.Context
                     Author="George Orwell",
                     Name = "1984",
                     Publisher="Bilinmeyen Yayınları"
+                },
+                new BookEntity()
+                {
+                    Id =4,
+                    Author = "George Orwell",
+                    Name = "Hayvan Çiftliği",
+                    Publisher ="Kodluyoruz Yayınevi"
                 }
             };
         }
+
+
     }
 }

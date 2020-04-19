@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@foreach (KeyValuePair<string, bool> item in ViewBag.InstanceStatuses)
+{
+    if (item.Value)
+    {
+        <span><div class="alert alert-primary">@item.Key instances are same</div></span>
+    }
+    else
+    {
+        <span><div class="alert alert-danger">@item.Key instances are different</div></span>
+    }
+}

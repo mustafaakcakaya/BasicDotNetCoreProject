@@ -25,8 +25,17 @@ namespace Bootcamp2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+            #region notlar
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation(); 
+            #endregion
+            services.AddRazorPages().AddRazorRuntimeCompilation().AddMvcOptions(options=> {
+                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "Bu alan boþ býrakýlamaz.");
+            });
             services.AddControllersWithViews();
+            services.AddScoped <ScopedService>();
+            services.AddTransient <TransientClass>();
+            services.AddSingleton<UserContext>();
+            services.AddTransient<UserService>();
             services.AddScoped<MessageService>();
             services.AddSingleton<BookContext>();
             services.AddTransient<BookService>();
@@ -56,7 +65,7 @@ namespace Bootcamp2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Book}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Index}/{id?}");
             });
         }
     }

@@ -30,6 +30,10 @@ namespace Bootcamp2.Services
             _bookContext.Books.Remove(entity);
             _bookContext.Books.Add(bookEntity);
         }
+        public void Add(BookEntity entity)
+        {
+            _bookContext.Books.Add(entity);
+        }
         public void Delete(BookEntity bookEntity)
         {
             var entity = _bookContext.Books.FirstOrDefault(x => x.Id == bookEntity.Id);

@@ -11,6 +11,7 @@
     <p>ID: @book.Id Name: @book.Name Author : @book.Publisher.</p>
 }*@
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-1">Sıra No</div>
@@ -19,16 +20,16 @@
         <div class="col-md-3">Yayın Evi</div>
         <div class="col-md-2"></div>
     </div>
-    @foreach (var book in Model)
+    @foreach (BookViewModel book in Model)
     {
         <div class="row">
             <div class="col-md-1"><p>@book.Id</p></div>
             <div class="col-md-3"><p>@book.Name</p></div>
             <div class="col-md-3"><p>@book.Author</p></div>
             <div class="col-md-3"><p>@book.Publisher</p></div>
-            <div><a href="Book/Edit?id=@book.Id" class="btn btn-primary col-md-1">Düzenle</a></div>
-            <div><a href="Book/Delete?id=@book.Id" class="btn btn-danger col-md-1">Sil</a></div>
+            <div><a href="Book/Edit?id=@book.Id" class="btn btn-primary col-md-2">Düzenle</a></div>
         </div>
     }
+    <div><a href="Book/Add" class="btn btn-primary col-md-2">Yeni Ekle</a></div>
 </div>
 

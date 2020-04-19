@@ -20,7 +20,7 @@ namespace Bootcamp2.Controllers
         public IActionResult Index()
         {
             var bookEntities = _bookService.GetBooks();
-            var bookViewModelList = new List<BookViewModel>();
+            List<BookViewModel> bookViewModelList = new List<BookViewModel>();
             foreach (var entity in bookEntities)
             {
                 bookViewModelList.Add(new BookViewModel
@@ -33,6 +33,8 @@ namespace Bootcamp2.Controllers
             }
             return View(bookViewModelList);
         }
+
+
         public IActionResult Edit(int id)
         {
             var bookEntity = _bookService.Get(id);
@@ -43,20 +45,23 @@ namespace Bootcamp2.Controllers
                 Name = bookEntity.Name,
                 Publisher = bookEntity.Publisher
             };
-            return View(bookVM);            
+            return View(bookVM);
         }
+
         [HttpPost]
         public IActionResult Edit(BookViewModel model)
         {
             var bookEntity = new BookEntity
             {
-                Id =model.Id,
+                Id = model.Id,
                 Name = model.Name,
                 Author = model.Author,
                 Publisher = model.Publisher
             };
             _bookService.Edit(bookEntity);
-            var updatedEntity = _bookService.Get(model.Id);
+
+            #region Notlar
+            //var updatedEntity = _bookService.Get(model.Id);
             //NOTE: Still need to improve somethings here and anywhere in project
             //var bookVM = new BookViewModel
             //{
@@ -66,12 +71,38 @@ namespace Bootcamp2.Controllers
             //    Publisher = updatedEntity.Publisher
             //};
 
-            //return View(bookVM);
+            //return View(bookVM); 
+            #endregion
+
+            return RedirectToAction(nameof(Index), "Book");
+        }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(BookViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            BookEntity entity = new BookEntity
+            {
+                Id = model.Id,
+                Author = model.Author,
+                Name = model.Name,
+                Publisher = model.Publisher
+            };
+            _bookService.Add(entity);
             return RedirectToAction(nameof(Index),"Book");
         }
+
+
         public IActionResult Delete(BookViewModel model)
         {
-            BookEntity entity = new BookEntity {
+            BookEntity entity = new BookEntity
+            {
                 Id = model.Id,
                 Name = model.Name,
                 Author = model.Author,
@@ -80,8 +111,8 @@ namespace Bootcamp2.Controllers
 
             _bookService.Delete(entity);
 
-            return RedirectToAction(nameof(Index),"Book");
+            return RedirectToAction(nameof(Index), "Book");
         }
-        
+
     }
 }
