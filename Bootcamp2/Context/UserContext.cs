@@ -18,7 +18,7 @@ namespace Bootcamp2.Context
                     Id = 1,
                     Name = "Hazel",
                     Surname = "Cakli",
-                    BirthDate = DateTime.Now.AddYears(-22),
+                    BirthDate = DateTime.Now.AddYears(-31),
                      Gender = "Kadın",
                       Email="email.email@gmail.com",
                        GithubAccountUrl="emailcigithub"
@@ -26,7 +26,7 @@ namespace Bootcamp2.Context
                 },
                 new UserEntity
                 {
-                    Id = 1,
+                    Id = 2,
                     Name = "Berna",
                     Surname = "İkiz",
                     BirthDate = DateTime.Now.AddYears(-23),
@@ -37,7 +37,7 @@ namespace Bootcamp2.Context
                 },
                 new UserEntity
                 {
-                    Id = 1,
+                    Id = 3,
                     Name = "Mustafa",
                     Surname = "Akçakaya",
                     BirthDate = DateTime.Now.AddYears(-25),

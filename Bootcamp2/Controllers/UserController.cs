@@ -12,7 +12,7 @@ namespace Bootcamp2.Controllers
 {
     //controller yazmak buraya gelmek için controller yazılmasını zorunlu tutar.
     //action yazmak da zorunlu tutar.
-    [Route("[controller]([action]")] 
+    [Route("[controller]/[action]")] 
     public class UserController : Controller
     {
         private readonly UserService _service;
@@ -90,18 +90,18 @@ namespace Bootcamp2.Controllers
             UserViewModel userVM = new UserViewModel
             {
                 Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
                 BirthDate = user.BirthDate,
                 Email = user.Email,
                 Gender = user.Gender,
-                GithubAccountUrl = user.GithubAccountUrl,
-                Name = user.Name,
-                Surname = user.Surname
+                GithubAccountUrl = user.GithubAccountUrl    
             };
             return View(userVM);
         }
 
 
-        //[HttpGet("DetailEdit/{id}")]
+        [HttpGet("DetailEdit/{id}")]
         public IActionResult Edit(int id)
         {
             UserEntity user = _service.Get(id);
